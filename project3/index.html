@@ -2,30 +2,35 @@
 
 <!DOCTYPE html>
 
-<html>
+<html lang="en">
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Sign Up Form</title>
+        <script src='https://use.fontawesome.com/eeeba72acb.js'></script>
         <link rel="stylesheet" href="css/normalize.css">        
         <link rel="stylesheet" href="css/styles.css">
-        <link href='https://fonts.googleapis.com/css?family=Nunito:400,300&#124;Roboto:900' rel='stylesheet' type='text/css'>    </head>
+        <link href='https://fonts.googleapis.com/css?family=Nunito:400,300%7C;Roboto:900' rel='stylesheet' type='text/css'>
+        
+  </head>
     <body>
       <header class="presentation">
-        <h1>The Code Review</h1>
+        <h1 class="style-1">The Code Review</h1>
+        <div class="style-2">
         <h2>Sign up for our newsletter</h2>
         <p>Get the latests on how your code is doing right in your inbox</p>
+        </div>
       </header>
 
       <form action="index.html" method="post">
-
+        <div class="container">
         <fieldset id="contact-info">
         <legend class="subtitle">Contact Information</legend>
           <label for="fullname">Full Name</label>
           <input type="text" id="fullname" class="required" name="user_name" placeholder="Required" required>
           
           <label for="doh">Date of Birth</label>
-          <input type="date" id="doh" name="user_doh">
+          <input type="date" data-pollyfill="all" id="doh" name="user_doh">
           
         
           <label for="email">Email Address</label>
@@ -41,12 +46,15 @@
           <input type="password" id="confirm_password" class="required" name="user_confirm_password"  placeholder="Required" autocomplete="off">
           
             <label class="age">Age</label>
-          <input type="radio" id="under_21" value="under_21" name="user_age"><label for="under_21" class="light age">Under 21</label><br>
-          <input type="radio" id="between_21_40" value="between_21_40" name="user_age"><label for="between_21_40" class="light age">Between 21 and 40</label><br>
-          <input type="radio" id="more_40" value="more_40" name="user_age"><label for="more_40" name="user_age" class="light age">40 and more</label>
+          
+          <label for="under_21" class="light"><input type="radio" id="under_21" value="under_21" name="user_age"><span class='label-text'>Under 21</span></label><br>
+          
+          <label for="between_21_40"  class="light"><input type="radio" id="between_21_40" value="between_21_40" name="user_age"><span class='label-text'>Between 21 and 40</span></label><br>
+          
+          <label for="more_40"  class="light"><input type="radio" id="more_40" value="more_40" name="user_age"><span class='label-text'>40 and more</span></label><br/>
           
           
-          <label for="phone">Phone Number</label>
+          <label for="phone" class="margin-adjust">Phone Number</label>
           <input type="tel" id="phone" name="user_phone">
           
           <label for="street">Street Address</label>
@@ -55,7 +63,7 @@
           <label for="city">City</label>
           <input type="text" id="city" name="user_city">
           
-          <label for="state">State</label>
+          <label for="state" class="state">State</label>
          
           <select id="state" name="user_state" class="state">
             <option value="" disabled selected>Choose State</option>
@@ -116,7 +124,7 @@
           <div id="div1"></div>
           
           <label for="zipcode">Zip Code</label>
-          <input type="number" id="zipcode" name="user_zipcode" class="zipcode" maxlength="5" autofocus>
+          <input type="number" id="zipcode" name="user_zipcode" class="zipcode" autofocus>
           
           
        
@@ -126,17 +134,18 @@
         
         <fieldset id="newletter">
          <legend>Newsletter</legend> 
-          <label for="news">Select the newsletters you would like to recieve:</label>
-          <input type="checkbox" id="opt_html" value="opt_html" name="user_newsletter_preference">
-            <label for="opt_html" class="light">HTML News</label><br>
-          <input type="checkbox" id="opt_css" value="opt_css" name="user_newsletter_preference">
-            <label for="opt_css" class="light">CSS News</label><br>
-          <input type="checkbox" id="opt_js" value="opt_js" name="user_newsletter_preference">
-            <label for="opt_js" class="light">Javascript News</label><br>
+           <label>Select the newsletters you would like to recieve:</label>
           
-          <label for="job">What are you interested to work in?</label>
+           <label for="opt_html" class="light"><input type="checkbox" id="opt_html" value="opt_html" name="user_newsletter_preference"><span class='label-text'>HTML News</span></label><br>
+          
+            <label for="opt_css" class="light"><input type="checkbox" id="opt_css" value="opt_css" name="user_newsletter_preference"><span class='label-text'>CSS News</span></label><br>
+          
+            <label for="opt_js" class="light"><input type="checkbox" id="opt_js" value="opt_js" name="user_newsletter_preference"><span class='label-text'>Javascript News</span></label><br>
+          
+          <label for="job" class="margin-adjust">What are you interested to work in?</label>
           <select id="job" name="user_job">
             <optgroup label="Web">
+              <option value="" disabled selected>Please choose an option..</option>
               <option value="web_developer">Web Developer</option>
               <option value="rails_developer">Rails Developer</option>
               <option value="frontend_developer">Front End Developer</option>
@@ -154,12 +163,12 @@
            </optgroup>
           </select>
           
-          <label for="news">Other topics you'd like to hear about?</label>
-          <textarea id="bio" name="user_bio"></textarea>
+          <label>Other topics you'd like to hear about?</label>
+          <textarea id="bio" name="user_bio" placeholder="e.g.: Photoshop, UX, How to design a logo..."></textarea>
           
           
         </fieldset>
-        
+   </div>
         <button type="submit" class="inln">Sign up</button>
         <button type="reset" class="error inln">Reset</button>
         

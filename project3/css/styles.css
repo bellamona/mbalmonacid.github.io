@@ -8,9 +8,16 @@
 body {
   font-family: 'Nunito', sans-serif;
   color: #384047;
-  background: url("../img/geometric.jpg");
-  background-color:#fff;
+  background: url("../img/geometric.jpg") no-repeat center center fixed ;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  
+  
 }
+
+/********* form *********/
 
 form {
   max-width: 300px;
@@ -24,6 +31,20 @@ form {
   margin: 0 0 30px 0;
   text-align: center;
   color:#EBF2F3;
+  font-family:'Roboto', sans-serif;
+  
+}
+.style-1 {
+  background-color: rgba(32, 32, 32, 0.6);
+  margin:0;
+  padding-top: 30px;
+  padding-bottom:20px;
+}
+
+.style-2 {
+   background-color: rgba(0, 102, 102, 0.6);
+   padding-top:20px;
+   padding-bottom: 20px;
 }
 
 input[name="user_zipcode"] {
@@ -59,10 +80,59 @@ select {
 
 
 
-input[type="radio"],
-input[type="checkbox"] {
-  margin: 0 4px 8px 0;
-}
+input[type="checkbox"],
+input[type="radio"] {
+	/*width: 20px;
+	height: 20px;
+	vertical-align: middle;*/
+	display: none;
+	}
+
+	input[type="checkbox"] + .label-text::before {
+		font-family: 'FontAwesome';
+		font-size: 1.25em;
+		font-weight: bold;
+		margin-right: 20px;
+		color: #3ca29c;
+		width: 1em;
+		display: inline-block;
+		vertical-align: middle;
+		content: "\f096";
+	}
+
+	input[type="radio"] + .label-text::before {
+		font-family: 'FontAwesome';
+		font-size: 1.25em;
+		font-weight: bold;
+		margin-right: 20px;
+		color: #3ca29c;
+		width: 1em;
+		display: inline-block;
+		vertical-align: middle;
+		content: "\f10c";
+	}
+
+	@-webkit-keyframes check-radio {
+		0% { opacity: 0; -webkit-transform: scale(0.5); }
+		90% { opacity: 1; -webkit-transform: scale(1.2); }
+		100% { opacity: 1; -webkit-transform: scale(1); }
+	}
+
+
+	input[type="checkbox"]:checked + .label-text::before {
+		content:"\f14a";
+		transform: scale(1,1);
+		animation-name: check-radio;
+		animation-duration: 0.4s;
+	}
+
+	input[type="radio"]:checked + .label-text::before {
+		content:"\f192";
+		transform: scale(1,1);
+		animation-name: check-radio;
+		animation-duration: 0.4s;
+	}
+
 
 
 fieldset {
@@ -118,10 +188,8 @@ input:focus, textarea:focus {
   
 }
 
-input:type["checkbox"]:checked + label {
-  font-weight:900;
-}
 
+/******* footer *********/
 .main-footer {
   font-size: 0.8em;
   font-style:italic;
@@ -143,16 +211,17 @@ input:type["checkbox"]:checked + label {
 @media screen and (min-width: 768px) {
   
   .inln {
-    width:auto;
+    width:200px;
     display: inline-block;
-    margin-left:35px;
-    margin-right:35px;
+    margin-left:50px;
+   
+  }
+  
+  select {
+    height:55px;
   }
   
 
-   .state, input[name="user_zipcode"] {
-    max-width:30%;
-  }
   
   form {
     max-width:600px;
@@ -163,28 +232,102 @@ input:type["checkbox"]:checked + label {
       height: 7em;
   }
   
-  #contact-info label, label:not(.age), select {
+  #contact-info label {
     display:inline-block;
     float:left;
-    clear:both; 
-    vertical-align:top;
-  }
-  
-  #contact-info input, input:not(.age), select {
-   max-width: 60%;
-   float:right;
-   vertical-align:top;
+    clear:both;
+    width:40%;
+   
     
   }
   
- input[type="radio"]{
-  vertical-align:baseline;
+  #contact-info input, #contact-info select {
+   width: 60%;
+   float:left;
+   vertical-align:top;
+   
+    
+  }
+  
+  
+  
+   #contact-info input[name="user_zipcode"] {
+    width:20%;
+  }
+  
+   .margin-adjust, input[name="user_phone"]{
+    margin-top: 20px;
    }
+
  
+ 
+  #contact-info input[name="user_age"] {
+   width: 10%;
+   
+  }
+  
+
+
+
 
 }
+
   
+ /****** larger screens *******/
+
+@media screen and (min-width: 1024px) {
+.container {
+  display: -webkit-box;      /* OLD - iOS 6-, Safari 3.1-6 */
+  display: -moz-box;         /* OLD - Firefox 19- (buggy but mostly works) */
+  display: -ms-flexbox;      /* TWEENER - IE 10 */
+  display: -webkit-flex;
+  display:flex;
+   
+  -webkit-box-flex-direction:row;
+  -moz-box-flex-direction:row;
+  -ms-flex-direction:row;      
+  -webkit-flex-direction:row;
+  flex-direction: row;
  
+  }
+
+  
+  form {
+    max-width:900px;
+  }
+
+  
+  textarea {
+      height: 20em;
+  }
+  
+  #contact-info label {
+    width:100%;
+    margin: 10px;;
+    
+  }
+  
+  #contact-info input, #contact-info select {
+   width: 100%;
+   float:left;
+   vertical-align:top;
+   
+    
+  }
+  
+  
+   #contact-info input[name="user_zipcode"] {
+    width:40%;
+  }
+  
+   .inln {
+    width: 250px;
+    margin-left:100px;
+   
+  }
+
+  
+}
   
  
 
@@ -205,6 +348,7 @@ button {
   box-shadow: 0 -1px 0 rgba(255,255,255,0.1) inset;
   margin-bottom: 10px;
   cursor:pointer;
+  
 }
 
 button:hover {
